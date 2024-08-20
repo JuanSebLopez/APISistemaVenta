@@ -10,7 +10,8 @@ namespace SistemaVenta.BLL.Services.Contracts
 {
     public interface IVentaService
     {
-        Task<VentaDTO> Regsitrar(VentaDTO modelo);
-        Task<VentaDTO> Historial(string buscarPor, string numeroVenta, string fechaInicio, string fechaFin);
+        Task<VentaDTO> Register(VentaDTO modelo);
+        Task <List<VentaDTO>> Record(string buscarPor, string numeroVenta, string fechaInicio, string fechaFin);
+        Task <List<ReporteDTO>> Report(string fechaInicio, string fechaFin);
     }
 }

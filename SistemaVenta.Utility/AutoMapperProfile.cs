@@ -127,7 +127,7 @@ namespace SistemaVenta.Utility
                     route.Total,
                     opt => opt.MapFrom(origin => Convert.ToDecimal(origin.TotalTexto, new CultureInfo("es-CO")))
                 );
-            #endregion Categoria
+            #endregion DetalleVenta
 
             #region Reporte
             CreateMap<DetalleVenta, ReporteDTO>()
