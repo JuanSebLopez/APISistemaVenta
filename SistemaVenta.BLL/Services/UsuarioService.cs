@@ -47,12 +47,12 @@ namespace SistemaVenta.BLL.Services
                     u.Clave == clave
                 );
 
-                if ( queryUsuario.FirstOrDefault() == null )
-                    throw new TaskCanceledException("El usuario no existe");
+                var usuario = queryUsuario.Include(rol => rol.IdRolNavigation).FirstOrDefault();
 
-                Usuario devolverUsuario = queryUsuario.Include(rol => rol.IdRolNavigation).First();
+                if (usuario == null || usuario.EsActivo == false)
+                    throw new TaskCanceledException("Correo o contraseña incorrectos");
 
-                return _mapper.Map<SesionDTO>(devolverUsuario);
+                return _mapper.Map<SesionDTO>(usuario);
             }
             catch
             {

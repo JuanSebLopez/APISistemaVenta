@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaVenta.BLL.Services.Contracts;
 using SistemaVenta.DTO;
 using SistemaVenta.API.Ultility;
+using SistemaVenta.BLL.Services;
 
 namespace SistemaVenta.API.Controllers
 {
@@ -34,6 +35,63 @@ namespace SistemaVenta.API.Controllers
                 rsp.status = false;
                 rsp.msg = ex.Message;
             }
+            return Ok(rsp);
+        }
+
+        [HttpPost]
+        [Route("Guardar")]
+        public async Task<IActionResult> Guardar([FromBody] CategoriaDTO categoriaDTO)
+        {
+            var rsp = new Response<CategoriaDTO>();
+
+            try
+            {
+                rsp.status = true;
+                rsp.value = await _categoriaService.Crear(categoriaDTO);
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+            }
+            return Ok(rsp);
+        }
+
+        [HttpPut]
+        [Route("Editar")]
+        public async Task<IActionResult> Editar([FromBody] CategoriaDTO categoriaDTO)
+        {
+            var rsp = new Response<bool>();
+            try
+            {
+                rsp.status = true;
+                rsp.value = await _categoriaService.Editar(categoriaDTO);
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+            }
+            return Ok(rsp);
+        }
+
+        [HttpDelete]
+        [Route("Eliminar/{id:int}")]
+        public async Task<IActionResult> Eliminar(int id)
+        {
+            var rsp = new Response<bool>();
+
+            try
+            {
+                rsp.status = true;
+                rsp.value = await _categoriaService.Eliminar(id);
+            }
+            catch (Exception ex) 
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+            }
+
             return Ok(rsp);
         }
     }

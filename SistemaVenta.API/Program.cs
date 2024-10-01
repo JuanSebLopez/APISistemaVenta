@@ -1,16 +1,17 @@
+using SistemaVenta.API.Middleware;
 using SistemaVenta.IOC;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Inyeccion de Dependencias
 builder.Services.DependencieInjection(builder.Configuration);
 
+// Configuración de CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("NuevaPolitica", app =>
@@ -23,18 +24,19 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+// Configuración Swagger
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors("NuevaPolitica");
 
-app.UseAuthorization();
+// Middleware de verificación estado usuario activo
 
+app.UseMiddleware<VerificarEstadoMiddleware>();
+
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

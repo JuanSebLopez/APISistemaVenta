@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaVenta.BLL.Services.Contracts;
 using SistemaVenta.DTO;
 using SistemaVenta.API.Ultility;
-using SistemaVenta.BLL.Services;
 
 namespace SistemaVenta.API.Controllers
 {
