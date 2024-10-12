@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaVenta.DTO", "Sistema
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaVenta.Utility", "SistemaVenta.Utility\SistemaVenta.Utility.csproj", "{FB2101FD-6E87-475E-B4ED-759E887A43ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVenta.Tests", "SistemaVenta.Tests\SistemaVenta.Tests.csproj", "{DC8EC1A2-93F0-4288-8056-9C55C9A3B621}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{FB2101FD-6E87-475E-B4ED-759E887A43ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB2101FD-6E87-475E-B4ED-759E887A43ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB2101FD-6E87-475E-B4ED-759E887A43ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC8EC1A2-93F0-4288-8056-9C55C9A3B621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC8EC1A2-93F0-4288-8056-9C55C9A3B621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC8EC1A2-93F0-4288-8056-9C55C9A3B621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC8EC1A2-93F0-4288-8056-9C55C9A3B621}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
