@@ -63,7 +63,7 @@ namespace SistemaVenta.Utility
                 )
                 .ForMember(route => 
                     route.Precio,
-                    opt => opt.MapFrom(origin => Convert.ToString(origin.Precio.Value, new CultureInfo("es-CO")))
+                    opt => opt.MapFrom(origin => Convert.ToString(origin.Precio.Value, CultureInfo.InvariantCulture))
                 )
                 .ForMember(route =>
                     route.EsActivo,
@@ -89,7 +89,7 @@ namespace SistemaVenta.Utility
             CreateMap<Venta, VentaDTO>()
                 .ForMember(route =>
                     route.TotalTexto,
-                    opt => opt.MapFrom(origin => Convert.ToString(origin.Total.Value, new CultureInfo("es-CO")))
+                    opt => opt.MapFrom(origin => Convert.ToString(origin.Total.Value, CultureInfo.InvariantCulture))
                 )
                 .ForMember(route =>
                     route.FechaRegistro,
@@ -99,7 +99,7 @@ namespace SistemaVenta.Utility
             CreateMap<VentaDTO, Venta>()
                 .ForMember(route =>
                     route.Total,
-                    opt => opt.MapFrom(origin => Convert.ToDecimal(origin.TotalTexto, new CultureInfo("es-CO")))
+                    opt => opt.MapFrom(origin => Convert.ToDecimal(origin.TotalTexto, CultureInfo.InvariantCulture))
                 );
             #endregion Venta
 
@@ -111,21 +111,21 @@ namespace SistemaVenta.Utility
                 )
                 .ForMember(route =>
                     route.PrecioTexto,
-                    opt => opt.MapFrom(origin => Convert.ToString(origin.Precio.Value, new CultureInfo("es-CO")))
+                    opt => opt.MapFrom(origin => Convert.ToString(origin.Precio.Value, CultureInfo.InvariantCulture))
                 )
                 .ForMember(route =>
                     route.TotalTexto,
-                    opt => opt.MapFrom(origin => Convert.ToString(origin.Total.Value, new CultureInfo("es-CO")))
+                    opt => opt.MapFrom(origin => Convert.ToString(origin.Total.Value, CultureInfo.InvariantCulture))
                 );
 
             CreateMap<DetalleVentaDTO, DetalleVenta>()
                 .ForMember(route =>
                     route.Precio,
-                    opt => opt.MapFrom(origin => Convert.ToDecimal(origin.PrecioTexto, new CultureInfo("es-CO")))
+                    opt => opt.MapFrom(origin => Convert.ToDecimal(origin.PrecioTexto, CultureInfo.InvariantCulture))
                 )
                 .ForMember(route =>
                     route.Total,
-                    opt => opt.MapFrom(origin => Convert.ToDecimal(origin.TotalTexto, new CultureInfo("es-CO")))
+                    opt => opt.MapFrom(origin => Convert.ToDecimal(origin.TotalTexto, CultureInfo.InvariantCulture))
                 );
             #endregion DetalleVenta
 
@@ -145,7 +145,7 @@ namespace SistemaVenta.Utility
                 )
                 .ForMember(route =>
                     route.TotalVenta,
-                    opt => opt.MapFrom(origin => Convert.ToString(origin.IdVentaNavigation.Total.Value, new CultureInfo("es-CO")))
+                    opt => opt.MapFrom(origin => Convert.ToString(origin.IdVentaNavigation.Total.Value, CultureInfo.InvariantCulture))
                 )
                 .ForMember(route =>
                     route.Producto,
@@ -153,11 +153,11 @@ namespace SistemaVenta.Utility
                 )
                 .ForMember(route =>
                     route.Precio,
-                    opt => opt.MapFrom(origin => Convert.ToString(origin.Precio.Value, new CultureInfo("es-CO")))
+                    opt => opt.MapFrom(origin => Convert.ToString(origin.Precio.Value, CultureInfo.InvariantCulture))
                 )
                 .ForMember(route =>
                     route.Total,
-                    opt => opt.MapFrom(origin => Convert.ToString(origin.Total.Value, new CultureInfo("es-CO")))
+                    opt => opt.MapFrom(origin => Convert.ToString(origin.Total.Value, CultureInfo.InvariantCulture))
                 );
             #endregion Reporte
         }

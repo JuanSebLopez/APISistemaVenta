@@ -1,7 +1,24 @@
-using SistemaVenta.API.Middleware;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using SistemaVenta.DAL.DBContext;
 using SistemaVenta.IOC;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var environment = builder.Environment.IsProduction() ? "Production" : "Development";
+
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{environment}.json", optional:true)
+    .AddEnvironmentVariables()
+    .Build();
+
+Console.WriteLine($"Entorno actual: {environment}");
+Console.WriteLine($"Cadena de conexión: {configuration.GetConnectionString("cadenaSQL")}");
+
+builder.Services.AddDbContext<DbContext>(options =>
+    options.UseSqlServer(configuration.GetConnectionString("cadenaSQL")));
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -24,17 +41,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-
 // Configuración Swagger
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseCors("NuevaPolitica");
-
-// Middleware de verificación estado usuario activo
-
-app.UseMiddleware<VerificarEstadoMiddleware>();
 
 app.UseAuthorization();
 app.MapControllers();

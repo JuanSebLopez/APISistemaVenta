@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Linq.Expressions;
-using SistemaVenta.Model;
 
 namespace SistemaVenta.DAL.Repositories.Contracts
 {

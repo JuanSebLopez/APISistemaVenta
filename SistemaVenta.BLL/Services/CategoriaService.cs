@@ -36,11 +36,11 @@ namespace SistemaVenta.BLL.Services
             }
         }
 
-        public async Task<CategoriaDTO> Crear(CategoriaDTO modelo)
+        public async Task<CategoriaDTO> Crear(CategoriaDTO categoriaDTO)
         {
             try
             {
-                var categoriaCreada = await _categoriaRepositorio.Create(_mapper.Map<Categoria>(modelo));
+                var categoriaCreada = await _categoriaRepositorio.Create(_mapper.Map<Categoria>(categoriaDTO));
 
                 if (categoriaCreada.IdCategoria == 0)
                     throw new TaskCanceledException("No se pudo crear");
@@ -53,11 +53,11 @@ namespace SistemaVenta.BLL.Services
             }
         }
 
-        public async Task<bool> Editar(CategoriaDTO modelo)
+        public async Task<bool> Editar(CategoriaDTO categoriaDTO)
         {
             try
             {
-                var categoriaModelo = _mapper.Map<Categoria>(modelo);
+                var categoriaModelo = _mapper.Map<Categoria>(categoriaDTO);
 
                 var categoriaEncontrada = await _categoriaRepositorio.Get(u =>
                     u.IdCategoria == categoriaModelo.IdCategoria);
